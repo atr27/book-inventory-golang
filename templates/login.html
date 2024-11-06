@@ -1,0 +1,38 @@
+{{ template "header.html" .}}
+
+<section class="section">
+    <form action="/login" method="POST">
+        <div class="container" style="border: 1px solid lightgray; border-radius: 3px; padding: 15px;">
+            {{if .content}}
+                <div class="notification is-danger is-light">
+                    {{.content}}
+                </div>
+            {{end}}
+
+            <div class="field">
+                <label class="label">Username</label>
+                <div class="control">
+                    <input class="input" type="text" name="username" placeholder="Enter your username" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                    <input class="input" type="password" name="password" placeholder="Enter your password" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary is-link">
+                        Login
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</section>
+
+{{ template "footer.html" .}}

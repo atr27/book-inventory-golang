@@ -1,0 +1,56 @@
+{{ template "header.html" .}}
+
+<section class="section">
+    {{if .payload}}
+        <form action="/updateBook/{{.payload.ID}}" method="post">
+    {{else}}
+        <form action="/book" method="post">
+    {{end}}
+        <div class="container" style="border: 1px solid lightgray; border-radius: 3px; padding: 15px;">
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input class="input" type="text" name="title" value="{{.payload.Title}}" placeholder="Enter your title" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Author</label>
+                <div class="control">   
+                    <input class="input" type="text" name="author" value="{{.payload.Author}}" placeholder="Enter your author" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Stock</label>
+                <div class="control">
+                    <input class="input" type="number" name="stock" value="{{.payload.Stock}}" placeholder="Enter your stock" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <input class="input" type="text" name="description" value="{{.payload.Description}}" placeholder="Enter your description" required>
+                </div>
+            </div>
+
+            <input type="hidden" name="auth" value="{{.auth}}" />
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary is-link">
+                        {{if .payload}}
+                            Update
+                        {{else}}
+                            Save
+                        {{end}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+{{ template "footer.html" .}}
